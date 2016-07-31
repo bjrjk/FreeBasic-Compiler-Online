@@ -35,7 +35,7 @@ function Make_Text($dir_path,$pass,$code){
 
 $code=$_POST["code"];
 $pass=randstr();
-if(stripos($code,"shell")!=false||stripos($code,"open")!=false||stripos($code,"exec")!=false||stripos($code,"chain")!=false){
+if(stripos($code,"shell")!=false||stripos($code,"open")!=false||stripos($code,"exec")!=false||stripos($code,"chain")!=false||stripos($code,"run")!=false){
 	Make_Text("shell/failed/",$pass,$code);
 	die("Don't do bad things!Recorded!");
 }
