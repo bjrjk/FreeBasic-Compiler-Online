@@ -19,16 +19,25 @@ elseif(!empty($_SERVER["HTTP_X_FORWARDED_FOR"])){
 elseif(!empty($_SERVER["REMOTE_ADDR"])){
   $cip = $_SERVER["REMOTE_ADDR"];
 }
-else{
-  $cip = $_SERVER["HTTP_CLIENT_IP"];
-}
 return $cip;
 }
+
+function Make_Text($dir_path,$pass,$code){
+	$ip=GetIP();
+	$ua=$_SERVER['HTTP_USER_AGENT'];
+	$file=fopen($dir_path.$pass.".txt","w");
+	fwrite($file,"Client IP Address:".$ip."\nUser Agent:".$ua."\nCode:\n");
+	fwrite($file,$code);
+	fwrite($file,"\n----End of File----\nCurrent Time:".date('y-m-d h:i:s',time()));
+	fclose($file);
+}
+
 
 $code=$_POST["code"];
 $pass=randstr();
 if(stripos($code,"shell")!=false&&stripos($code,"shell_str")==false){
-	die("Don't do bad things!");
+	Make_Text("shell/failed/",$pass,$code);
+	die("Don't do bad things!Recorded!");
 }
 $file=fopen("code/".$pass.".bas","w");
 fwrite($file,$code);
@@ -37,6 +46,7 @@ sleep(2);
 $arr=array();
 if(!($result=exec("app/".$pass,$arr))){
 	$result="Compile Error!";
+	Make_Text("error/",$pass,$code);
 }else{
 	$result="";
 	foreach($arr as $item){
