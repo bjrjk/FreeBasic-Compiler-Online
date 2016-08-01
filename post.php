@@ -61,4 +61,4 @@ unlink("app/".$pass);
 echo "<title>FreeBasic Compier Online--Result</title><div align=\"center\"><h2>FreeBasic Compier Online--Result</h2>";
 echo "<p>Code:</p><textarea rows=10 cols=50>$code</textarea><p>Result:</p><textarea rows=10 cols=50>$result</textarea>";
 echo "</div>";
-?>?>?>
+?>

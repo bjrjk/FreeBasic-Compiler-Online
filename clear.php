@@ -1,0 +1,3 @@
+<?php
+//clear.php
+?>
