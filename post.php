@@ -44,16 +44,20 @@ fwrite($file,$code);
 fclose($file);
 sleep(2);
 $arr=array();
-if(!($result=exec("app/".$pass,$arr))){
+if(!file_exists("app/".$pass)){
 	$result="Compile Error!";
 	Make_Text("error/",$pass,$code);
 }else{
-	$result="";
-	foreach($arr as $item){
-		$result.=$item."\n";
-	}
+  exec("app/".$pass." > result/".$pass.".txt");
+  sleep(2);
+  exec("killall ".$pass);
+  if(file_exists("result/".$pass.".txt")){
+    $result=file_get_contents("result/".$pass.".txt");
+  }else{
+    $result="Your Program run time over!";
+  }
 }
 echo "<title>FreeBasic Compier Online--Result</title><div align=\"center\"><h2>FreeBasic Compier Online--Result</h2>";
 echo "<p>Code:</p><textarea rows=10 cols=50>$code</textarea><p>Result:</p><textarea rows=10 cols=50>$result</textarea>";
 echo "</div>";
-?>
+?>?>?>
