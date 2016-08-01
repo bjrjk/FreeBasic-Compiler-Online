@@ -42,20 +42,20 @@ if(stripos($code,"shell")!=false||stripos($code,"open")!=false||stripos($code,"e
 $file=fopen("code/".$pass.".bas","w");
 fwrite($file,$code);
 fclose($file);
-sleep(2);
+sleep(1);
 $arr=array();
 if(!file_exists("app/".$pass)){
 	$result="Compile Error!";
 	Make_Text("error/",$pass,$code);
 }else{
   exec("app/".$pass." > result/".$pass.".txt &");
-  sleep(2);
+  sleep(1);
   $flag=false;
-  if(!exec("ps -A|grep ".$pass)){
-	  flag=true;
+  if(exec("ps -A|grep ".$pass)){
+	  $flag=true;
   }
   exec("killall ".$pass);
-  if(file_exists("result/".$pass.".txt") && flag==false){
+  if(file_exists("result/".$pass.".txt") && $flag==false){
     $result=file_get_contents("result/".$pass.".txt");
   }else{
     $result="Your Program run time over!";
