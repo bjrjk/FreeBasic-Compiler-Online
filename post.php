@@ -59,6 +59,7 @@ if(!file_exists("app/".$pass)){
     $result=file_get_contents("result/".$pass.".txt");
   }else{
     $result="Your Program run time over!";
+	Make_Text("timeup/",$pass,$code);
   }
 }
 unlink("app/".$pass);
