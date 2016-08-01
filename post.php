@@ -48,16 +48,21 @@ if(!file_exists("app/".$pass)){
 	$result="Compile Error!";
 	Make_Text("error/",$pass,$code);
 }else{
-  exec("app/".$pass." > result/".$pass.".txt");
+  exec("app/".$pass." > result/".$pass.".txt &");
   sleep(2);
+  $flag=false;
+  if(!exec("ps -A|grep ".$pass)){
+	  flag=true;
+  }
   exec("killall ".$pass);
-  if(file_exists("result/".$pass.".txt")){
+  if(file_exists("result/".$pass.".txt") && flag==false){
     $result=file_get_contents("result/".$pass.".txt");
   }else{
     $result="Your Program run time over!";
   }
 }
 unlink("app/".$pass);
+unlink("result/".$pass.".txt");
 echo "<title>FreeBasic Compier Online--Result</title><div align=\"center\"><h2>FreeBasic Compier Online--Result</h2>";
 echo "<p>Code:</p><textarea rows=10 cols=50>$code</textarea><p>Result:</p><textarea rows=10 cols=50>$result</textarea>";
 echo "</div>";
