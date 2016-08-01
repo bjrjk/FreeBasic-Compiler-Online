@@ -43,14 +43,14 @@ $file=fopen("code/".$pass.".bas","w");
 fwrite($file,$code);
 fclose($file);
 sleep(1);
-$arr=array();
+$flag=false;
 if(!file_exists("app/".$pass)){
 	$result="Compile Error!";
 	Make_Text("error/",$pass,$code);
+	$flag=true;
 }else{
   exec("app/".$pass." > result/".$pass.".txt &");
   sleep(1);
-  $flag=false;
   if(exec("ps -A|grep ".$pass)){
 	  $flag=true;
   }
@@ -65,6 +65,9 @@ if(!file_exists("app/".$pass)){
 unlink("app/".$pass);
 unlink("result/".$pass.".txt");
 echo "<title>FreeBasic Compier Online--Result</title><div align=\"center\"><h2>FreeBasic Compier Online--Result</h2>";
+if($flag==true){
+	echo "<h3>Error File No.<font color=\"red\">$pass</font>.Error Reason is in the following box.For further infomation please contact administrator.</h3>";
+}
 echo "<p>Code:</p><textarea rows=10 cols=50>$code</textarea><p>Result:</p><textarea rows=10 cols=50>$result</textarea>";
 echo "</div>";
 ?>
