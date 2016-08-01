@@ -15,5 +15,5 @@ while 1:
 			if os.path.exists(code_dir+filename):
 				print "remove "+filename
 				os.remove(code_dir+filename)
-	time.sleep(1)
+	time.sleep(0.6)
 
