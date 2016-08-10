@@ -5,6 +5,7 @@ import os.path
 absolute_path=""
 code_dir=absolute_path+"code/"
 app_dir=absolute_path+"app/"
+time_count=0
 
 while 1:
 	for parent,dirnames,filenames in os.walk(code_dir):
@@ -16,4 +17,7 @@ while 1:
 				print "remove "+filename
 				os.remove(code_dir+filename)
 	time.sleep(0.6)
-
+	time_count+=1
+	if time_count>=144000:
+		time.count=0
+		os.system("rm error/*.txt timeup/*.txt")

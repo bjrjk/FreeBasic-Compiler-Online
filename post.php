@@ -32,8 +32,33 @@ function Make_Text($dir_path,$pass,$code){
 	fclose($file);
 }
 
+function cutstr($str,$cutleng)
+{
+$str = $str; 
+$cutleng = $cutleng; 
+$strleng = strlen($str); 
+if($cutleng>$strleng)return $str;
+$notchinanum = 0;
+for($i=0;$i<$cutleng;$i++)
+{
+if(ord(substr($str,$i,1))<=128)
+{
+$notchinanum++;
+}
+}
+if(($cutleng%2==1)&&($notchinanum%2==0))
+{
+$cutleng++;
+}
+if(($cutleng%2==0)&&($notchinanum%2==1))
+{
+$cutleng++;
+}
+$str = substr($str,0,$cutleng);
+return $str;
+}
 
-$code=$_POST["code"];
+$code=cutstr($_POST["code"],2048);
 $pass=randstr();
 if(stripos($code,"shell")!=false||stripos($code,"open")!=false||stripos($code,"exec")!=false||stripos($code,"chain")!=false||stripos($code,"run")!=false||stripos($code,"php")!=false){
 	Make_Text("shell/failed/",$pass,$code);
@@ -69,5 +94,5 @@ if($flag==true){
 	echo "<h3>Error File No.<font color=\"red\">$pass</font>.Error Reason is in the following box.For further infomation please contact administrator.</h3>";
 }
 echo "<p>Code:</p><textarea rows=10 cols=50>$code</textarea><p>Result:</p><textarea rows=10 cols=50>$result</textarea>";
-echo "</div>";
+echo "<br/><input type=\"button\" name=\"Submit\" onclick=\"javascript:history.back(-1);\" value=\"Back\"></div>";
 ?>
