@@ -1,9 +1,20 @@
 <title>FreeBasic Compiler Online</title>
+<head>
+<script> 
+function check() { 
+var regE = /\D+/g; 
+var str = t1.value; 
+if(regE.test(str)){ 
+    t1.value = t1.value.substr(0,2048);  
+} 
+} 
+</script>
+</head>
 <div align="center">
 <h2>FreeBasic Compiler Online</h2>
 <p>Code Here:</p>
 <form method="POSt" action="post.php">
-<textarea rows="30" cols="100" name="code">
+<textarea rows="30" cols="100" name="code" id="t1"  maxlength="2048" onkeyup="check();" >
 </textarea>
 <br/>
 <input type="submit" value="Submit">
