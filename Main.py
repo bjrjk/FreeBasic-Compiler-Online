@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os,time
 import os.path
-
+os.system("/etc/init.d/apache2 start")
 absolute_path=""
 code_dir=absolute_path+"code/"
 app_dir=absolute_path+"app/"
