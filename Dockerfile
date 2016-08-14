@@ -8,5 +8,6 @@ RUN tar zxvf FreeBASIC-1.05.0-linux-x86_64.tar.gz
 WORKDIR /root/FreeBASIC-1.05.0-linux-x86_64
 RUN ./install.sh -i /
 COPY ./ /var/www/html/
+WORKDIR /var/www/html/
 ENTRYPOINT ["python","Main.py",">log.txt &"]
 EXPOSE 80
