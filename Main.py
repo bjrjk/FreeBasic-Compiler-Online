@@ -2,7 +2,7 @@
 import os,time
 import os.path
 print "Starting Apache..."
-os.system("service apache restart")
+os.system("service apache2 start")
 absolute_path=""
 code_dir=absolute_path+"code/"
 app_dir=absolute_path+"app/"
