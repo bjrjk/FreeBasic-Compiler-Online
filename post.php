@@ -67,7 +67,7 @@ if(stripos($code,"shell")!=false||stripos($code,"open")!=false||stripos($code,"e
 $file=fopen("code/".$pass.".bas","w");
 fwrite($file,$code);
 fclose($file);
-sleep(1);
+sleep(2);
 $flag=false;
 if(!file_exists("app/".$pass)){
 	$result="Compile Error!";
@@ -75,7 +75,7 @@ if(!file_exists("app/".$pass)){
 	$flag=true;
 }else{
   exec("app/".$pass." > result/".$pass.".txt &");
-  sleep(1);
+  sleep(2);
   if(exec("ps -A|grep ".$pass)){
 	  $flag=true;
   }

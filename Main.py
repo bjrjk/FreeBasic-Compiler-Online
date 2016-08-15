@@ -22,7 +22,6 @@ while 1:
 				os.remove(code_dir+filename)
 	time.sleep(0.5)
 	time_count+=1
-	print "Loop "+str(time_count)+" finsished!"
 	if time_count>=144000:
 		time.count=0
 		os.system("rm error/*.txt timeup/*.txt")
