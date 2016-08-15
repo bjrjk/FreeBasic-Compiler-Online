@@ -14,7 +14,7 @@ while 1:
 		for filename in filenames:
 			if filename[-3:]=="php":
 				continue
-			command_line="/usr/local/bin/fbc -x %s %s"%(app_dir+filename[:-4],code_dir+filename)
+			command_line="fbc -x %s %s"%(app_dir+filename[:-4],code_dir+filename)
 			print command_line
 			os.system(command_line)
 			if os.path.exists(code_dir+filename):
