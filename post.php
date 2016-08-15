@@ -76,7 +76,7 @@ if(!file_exists("app/".$pass)){
 }else{
   exec("app/".$pass." > result/".$pass.".txt &");
   sleep(2);
-  if(exec("ps -A|grep ".$pass)){
+  if(exec("ps -A|grep ".$pass)&&stripos(exec("ps -A|grep ".$pass),"defunct")!=true){
 	  $flag=true;
   }
   exec("killall ".$pass);
