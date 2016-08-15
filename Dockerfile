@@ -13,5 +13,5 @@ WORKDIR /var/www/html/
 RUN rm -rf *
 COPY ./ /var/www/html/
 RUN chmod -R 777 app code result error timeup
-ENTRYPOINT ["python","-u","Main.py"]
+ENTRYPOINT ["python","-u","Main.py",">log.txt"]
 EXPOSE 80
