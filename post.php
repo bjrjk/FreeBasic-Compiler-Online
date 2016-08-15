@@ -71,7 +71,7 @@ sleep(2);
 $flag=false;
 if(!file_exists("app/".$pass)){
 	$result="Compile Error!";
-	$ErrInfo="\nCompile Error Infomation:\n";
+	$ErrInfo="\nDetail Infomation:\n";
 	$arr=array();
 	exec("cat log.txt|grep ".$pass,$arr);
 	foreach($arr as $value){
