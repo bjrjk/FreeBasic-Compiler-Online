@@ -20,9 +20,9 @@ while 1:
 			if os.path.exists(code_dir+filename):
 				print "remove "+filename
 				os.remove(code_dir+filename)
-	time.sleep(0.5)
+	time.sleep(0.2)
 	time_count+=1
-	if time_count>=144000:
+	if time_count>=432000:
 		time.count=0
 		os.system("rm error/*.txt timeup/*.txt")
 		print "Clear Log Finished!"
