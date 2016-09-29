@@ -96,7 +96,7 @@ if(!file_exists("app/".$pass)){
 }
 unlink("app/".$pass);
 unlink("result/".$pass.".txt");
-echo "<title>FreeBasic Compier Online--Result</title><head><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no\" /></head><div align=\"center\"><h2>FreeBasic Compier Online--Result</h2>";
+echo "<title>FreeBasic Compier Online--Result</title><head><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no\" /></head><div align=\"center\"><h2>FreeBasic Compiler Online--Result</h2>";
 if($flag==true){
 	echo "<h3>Error File No.<font color=\"red\">$pass</font>.Error Reason is in the following box.For further infomation please contact administrator.</h3>";
 }
