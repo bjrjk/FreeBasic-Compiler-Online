@@ -1,6 +1,15 @@
 <title>FreeBasic Compiler Online</title>
 <head>
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="codemirror/lib/codemirror.js"></script>
+<link rel="stylesheet" href="codemirror/lib/codemirror.css">
+<script type="text/javascript" src="codemirror/addon/runmode/runmode.js"></script>
+<script src="codemirror/mode/vb/vb.js"></script>
+<style>
+      .CodeMirror {border: 1px solid #aaa; height:60%; width:25% }
+      .CodeMirror-scroll { overflow-x: auto; overflow-y: hidden;}
+      .CodeMirror pre { font-family: Inconsolata; font-size: 14px}
+    </style>
 <script> 
 function check() { 
 var regE = /\D+/g; 
@@ -22,3 +31,10 @@ if(regE.test(str)){
 <input type="reset" value="Reset">
 </form>
 </div>
+<script>
+var editor = CodeMirror.fromTextArea(document.getElementById("t1"), {
+        lineNumbers: true,
+        mode: "text/x-vb",
+        readOnly: false
+    });
+</script>
