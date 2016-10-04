@@ -96,10 +96,45 @@ if(!file_exists("app/".$pass)){
 }
 unlink("app/".$pass);
 unlink("result/".$pass.".txt");
-echo "<title>FreeBasic Compier Online--Result</title><head><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no\" /></head><div align=\"center\"><h2>FreeBasic Compiler Online--Result</h2>";
+?>
+<html>
+<title>FreeBasic Compier Online--Result</title>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="codemirror/lib/codemirror.js"></script>
+<link rel="stylesheet" href="codemirror/lib/codemirror.css">
+<script type="text/javascript" src="codemirror/addon/runmode/runmode.js"></script>
+<script src="codemirror/mode/vb/vb.js"></script>
+<style>
+      .CodeMirror {border: 1px solid #aaa; height:60%; width:25% }
+      .CodeMirror-scroll { overflow-x: auto; overflow-y: hidden;}
+      .CodeMirror pre { font-family: Inconsolata; font-size: 14px}
+</style>
+</head>
+<div align="center">
+<h2>FreeBasic Compiler Online--Result</h2>
+<?php
 if($flag==true){
 	echo "<h3>Error File No.<font color=\"red\">$pass</font>.Error Reason is in the following box.For further infomation please contact administrator.</h3>";
 }
-echo "<p>Code:</p><textarea rows=10 width=75%>$code</textarea><p>Result:</p><textarea rows=10 width=75%>$result</textarea>";
-echo "<br/><input type=\"button\" name=\"Submit\" onclick=\"javascript:history.back(-1);\" value=\"Back\"></div>";
 ?>
+<p>Code:</p>
+<textarea rows=10 width=75% id="code"><?php echo $code; ?></textarea>
+<p>Result:</p>
+<textarea rows=10 width=75% id="result"><?php echo $result; ?></textarea>
+<br/>
+<input type="button" name="Submit" onclick="javascript:history.back(-1);" value="Back">
+</div>
+<script>
+var editor_code = CodeMirror.fromTextArea(document.getElementById("code"), {
+        lineNumbers: true,
+        mode: "text/x-vb",
+        readOnly: true
+    });
+var editor_result = CodeMirror.fromTextArea(document.getElementById("result"), {
+        lineNumbers: true,
+        mode: "text/x-vb",
+        readOnly: true
+    });
+</script>
+</html>
